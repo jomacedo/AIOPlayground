@@ -1,0 +1,26 @@
+apiVersion: mq.iotoperations.azure.com/v1beta1
+kind: DataLakeConnector
+metadata:
+  name: my-datalake-connector
+  namespace: azure-iot-operations
+spec:
+  protocol: v5
+  image:
+    repository: mcr.microsoft.com/azureiotoperations/datalake
+    tag: 0.1.0-preview
+    pullPolicy: IfNotPresent
+  instances: 2
+  logLevel: "debug"
+  databaseFormat: "delta"
+  target:
+    datalakeStorage:
+      endpoint: "https://iotopsdemodatalake.blob.core.windows.net"
+      authentication:
+        accessTokenSecretName: "datalakesas"
+  localBrokerConnection:
+    endpoint: aio-mq-dmqtt-frontend:8883
+    tls:
+      tlsEnabled: true
+      trustedCaCertificateConfigMap: aio-ca-trust-bundle-test-only
+    authentication:
+      kubernetes: {}
