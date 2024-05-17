@@ -18,7 +18,7 @@ spec:
     # Subscribe from MQTT topic "thermostat" and send to Kafka topic "receiving-event-hub"
     - mqttToKafka:
         name: "opcuaserversimulator-route1"
-        mqttTopic: azure-iot-operations/data/opcuaserversimulator/realtimeasset
+        mqttTopic: azure-iot-operations/data/simulatedasset
         kafkaTopic: receiving-opcuaserversimulator
         kafkaAcks: one
         qos: 1
@@ -30,5 +30,5 @@ spec:
         name: "opcuaserversimulator-route2"
         consumerGroupId: mqConnector
         kafkaTopic: sending-opcuaserversimulator
-        mqttTopic: azure-iot-operations/data/opcuaserversimulator/realtimeasset-commands
+        mqttTopic: azure-iot-operations/data/simulatedasset-commands
         qos: 0
