@@ -1,7 +1,7 @@
 apiVersion: mq.iotoperations.azure.com/v1beta1
 kind: KafkaConnectorTopicMap
 metadata:
-  name: prosystm
+  name: fridge6
   namespace: azure-iot-operations
 spec:
   kafkaConnectorRef: my-eh-connector
