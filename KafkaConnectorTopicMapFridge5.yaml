@@ -1,0 +1,34 @@
+apiVersion: mq.iotoperations.azure.com/v1beta1
+kind: KafkaConnectorTopicMap
+metadata:
+  name: prosystm
+  namespace: azure-iot-operations
+spec:
+  kafkaConnectorRef: my-eh-connector
+#  compression: snappy
+  batching:
+    enabled: true
+    latencyMs: 200
+    maxMessages: 100
+    maxBytes: 1024
+  partitionStrategy: property
+  partitionKeyProperty: device-id
+  copyMqttProperties: true
+  routes:
+    # Subscribe from MQTT topic "thermostat" and send to Kafka topic "receiving-event-hub"
+    - mqttToKafka:
+        name: "prosys-route9"
+        mqttTopic: azure-iot-operations/data/fridge5
+        kafkaTopic: receiving-prosys
+        kafkaAcks: one
+        qos: 1
+        sharedSubscription:
+          groupName: group1
+          groupMinimumShareNumber: 3
+    # Pull from kafka topic "sending-event-hub" and publish to MQTT topic "thermostat-commands"
+    - kafkaToMqtt:
+        name: "prosys-route10"
+        consumerGroupId: mqConnector
+        kafkaTopic: sending-prosys
+        mqttTopic: azure-iot-operations/data/fridge5-commands
+        qos: 0

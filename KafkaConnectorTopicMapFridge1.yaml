@@ -1,14 +1,14 @@
 apiVersion: mq.iotoperations.azure.com/v1beta1
 kind: KafkaConnectorTopicMap
 metadata:
-  name: plcsimulatortm
+  name: prosystm
   namespace: azure-iot-operations
 spec:
   kafkaConnectorRef: my-eh-connector
 #  compression: snappy
   batching:
     enabled: true
-    latencyMs: 1000
+    latencyMs: 200
     maxMessages: 100
     maxBytes: 1024
   partitionStrategy: property
@@ -17,9 +17,9 @@ spec:
   routes:
     # Subscribe from MQTT topic "thermostat" and send to Kafka topic "receiving-event-hub"
     - mqttToKafka:
-        name: "plcsimulator-route1"
-        mqttTopic: azure-iot-operations/data/opc-ua-connector-0/thermostat
-        kafkaTopic: receiving-plcsimulator
+        name: "prosys-route1"
+        mqttTopic: azure-iot-operations/data/fridge1
+        kafkaTopic: receiving-prosys
         kafkaAcks: one
         qos: 1
         sharedSubscription:
@@ -27,8 +27,8 @@ spec:
           groupMinimumShareNumber: 3
     # Pull from kafka topic "sending-event-hub" and publish to MQTT topic "thermostat-commands"
     - kafkaToMqtt:
-        name: "plcsimulator-route2"
+        name: "prosys-route2"
         consumerGroupId: mqConnector
-        kafkaTopic: sending-plcsimulator
-        mqttTopic: azure-iot-operations/data/opc-ua-connector-0/thermostat-commands
+        kafkaTopic: sending-prosys
+        mqttTopic: azure-iot-operations/data/fridge1-commands
         qos: 0

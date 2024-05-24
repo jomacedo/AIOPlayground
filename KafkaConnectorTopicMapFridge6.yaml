@@ -1,7 +1,7 @@
 apiVersion: mq.iotoperations.azure.com/v1beta1
 kind: KafkaConnectorTopicMap
 metadata:
-  name: opcuaserversimulatortm
+  name: prosystm
   namespace: azure-iot-operations
 spec:
   kafkaConnectorRef: my-eh-connector
@@ -17,9 +17,9 @@ spec:
   routes:
     # Subscribe from MQTT topic "thermostat" and send to Kafka topic "receiving-event-hub"
     - mqttToKafka:
-        name: "opcuaserversimulator-route1"
-        mqttTopic: azure-iot-operations/data/simulatedasset
-        kafkaTopic: receiving-opcuaserversimulator
+        name: "prosys-route11"
+        mqttTopic: azure-iot-operations/data/fridge6
+        kafkaTopic: receiving-prosys
         kafkaAcks: one
         qos: 1
         sharedSubscription:
@@ -27,8 +27,8 @@ spec:
           groupMinimumShareNumber: 3
     # Pull from kafka topic "sending-event-hub" and publish to MQTT topic "thermostat-commands"
     - kafkaToMqtt:
-        name: "opcuaserversimulator-route2"
+        name: "prosys-route12"
         consumerGroupId: mqConnector
-        kafkaTopic: sending-opcuaserversimulator
-        mqttTopic: azure-iot-operations/data/simulatedasset-commands
+        kafkaTopic: sending-prosys
+        mqttTopic: azure-iot-operations/data/fridge6-commands
         qos: 0

@@ -9,13 +9,13 @@ spec:
     - direction: remote-to-local
       name: first-route
       qos: 0
-      source: simulatedasset
-      target: azure-iot-operations/data/simulatedasset
+      source: prosysasset
+      target: azure-iot-operations/data/fridge1
       sharedSubscription:
         groupMinimumShareNumber: 3
         groupName: group1
     - direction: local-to-remote
       name: second-route
       qos: 1
-      source: azure-iot-operations/data/simulatedasset
-      target: simulatedasset
+      source: azure-iot-operations/data/fridge1
+      target: prosysasset
