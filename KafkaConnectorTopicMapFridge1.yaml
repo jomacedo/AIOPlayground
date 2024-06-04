@@ -5,7 +5,7 @@ metadata:
   namespace: azure-iot-operations
 spec:
   kafkaConnectorRef: my-eh-connector
-#  compression: snappy
+  compression: snappy
   batching:
     enabled: true
     latencyMs: 200
