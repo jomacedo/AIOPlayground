@@ -4,7 +4,7 @@ metadata:
   name: datalake-topicmap
   namespace: azure-iot-operations
 spec:
-  dataLakeConnectorRef: "my-datalake-connector"
+  dataLakeConnectorRef: "datalakeconnector"
   mapping:
     allowedLatencySecs: 5
     messagePayloadType: "json"

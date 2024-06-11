@@ -1,7 +1,7 @@
 apiVersion: mq.iotoperations.azure.com/v1beta1
 kind: KafkaConnector
 metadata:
-  name: my-eh-connector
+  name: ehconnector
   namespace: azure-iot-operations
 spec:
   image:
@@ -9,7 +9,7 @@ spec:
     repository: mcr.microsoft.com/azureiotoperations/kafka
     tag: 0.1.0-preview
   instances: 2
-  clientIdPrefix: my-prefix
+  clientIdPrefix: jom
   kafkaConnection:
     # Port 9093 is Event Hubs' Kakfa endpoint
     # Plug in your Event Hubs namespace name

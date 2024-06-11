@@ -1,7 +1,7 @@
 apiVersion: mq.iotoperations.azure.com/v1beta1
 kind: DataLakeConnector
 metadata:
-  name: my-datalake-connector
+  name: datalakeconnector
   namespace: azure-iot-operations
 spec:
   protocol: v5

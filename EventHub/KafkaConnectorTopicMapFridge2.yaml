@@ -4,7 +4,7 @@ metadata:
   name: fridge2
   namespace: azure-iot-operations
 spec:
-  kafkaConnectorRef: my-eh-connector
+  kafkaConnectorRef: ehconnector
 #  compression: snappy
   batching:
     enabled: true

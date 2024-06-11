@@ -1,7 +1,7 @@
 apiVersion: mq.iotoperations.azure.com/v1beta1
 kind: MqttBridgeConnector
 metadata:
-  name: my-mqtt-bridge
+  name: mqttbridge
   namespace: azure-iot-operations
 spec:
   image: 

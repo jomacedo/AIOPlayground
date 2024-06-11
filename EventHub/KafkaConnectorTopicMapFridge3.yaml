@@ -1,10 +1,10 @@
 apiVersion: mq.iotoperations.azure.com/v1beta1
 kind: KafkaConnectorTopicMap
 metadata:
-  name: fridge6
+  name: fridge3
   namespace: azure-iot-operations
 spec:
-  kafkaConnectorRef: my-eh-connector
+  kafkaConnectorRef: ehconnector
 #  compression: snappy
   batching:
     enabled: true
@@ -17,8 +17,8 @@ spec:
   routes:
     # Subscribe from MQTT topic "thermostat" and send to Kafka topic "receiving-event-hub"
     - mqttToKafka:
-        name: "prosys-route11"
-        mqttTopic: azure-iot-operations/data/fridge6
+        name: "prosys-route5"
+        mqttTopic: azure-iot-operations/data/fridge3
         kafkaTopic: receiving-prosys
         kafkaAcks: one
         qos: 1
@@ -27,8 +27,8 @@ spec:
           groupMinimumShareNumber: 3
     # Pull from kafka topic "sending-event-hub" and publish to MQTT topic "thermostat-commands"
     - kafkaToMqtt:
-        name: "prosys-route12"
+        name: "prosys-route6"
         consumerGroupId: mqConnector
         kafkaTopic: sending-prosys
-        mqttTopic: azure-iot-operations/data/fridge6-commands
+        mqttTopic: azure-iot-operations/data/fridge3-commands
         qos: 0
