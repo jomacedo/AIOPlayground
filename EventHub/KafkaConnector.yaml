@@ -9,7 +9,7 @@ spec:
     repository: mcr.microsoft.com/azureiotoperations/kafka
     tag: 0.4.0-preview
   instances: 2
-  clientIdPrefix: jom
+  clientIdPrefix: <client_prefix>
   kafkaConnection:
     # Port 9093 is Event Hubs' Kakfa endpoint
     # Plug in your Event Hubs namespace name
