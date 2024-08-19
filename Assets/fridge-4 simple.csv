@@ -1,11 +1,11 @@
 NodeID,TagName,ObservabilityMode,Sampling Interval Milliseconds,QueueSize
-ns=3;i=4059,Temperature2,none,500,1
-ns=3;i=4103,Temperature4,none,500,1
-ns=3;i=4327,Temperature6,none,500,1
-ns=3;i=4574,Temperature5,none,500,1
-ns=3;i=4703,Temperature9,none,500,1
-ns=3;i=4769,DoorOpen,none,500,1
-ns=3;i=4828,Temperature1,none,500,1
-ns=3;i=4861,Temperature8,none,500,1
-ns=3;i=4926,Temperature7,none,500,1
-ns=3;i=4974,Temperature3,none,500,1
+ns=3;i=4059,Temperature2,None,500,1
+ns=3;i=4103,Temperature4,None,500,1
+ns=3;i=4327,Temperature6,None,500,1
+ns=3;i=4574,Temperature5,None,500,1
+ns=3;i=4703,Temperature9,None,500,1
+ns=3;i=4769,DoorOpen,None,500,1
+ns=3;i=4828,Temperature1,None,500,1
+ns=3;i=4861,Temperature8,None,500,1
+ns=3;i=4926,Temperature7,None,500,1
+ns=3;i=4974,Temperature3,None,500,1
