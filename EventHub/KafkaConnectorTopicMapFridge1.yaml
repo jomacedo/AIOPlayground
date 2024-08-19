@@ -15,20 +15,20 @@ spec:
   partitionKeyProperty: device-id
   copyMqttProperties: true
   routes:
-    # Subscribe from MQTT topic "thermostat" and send to Kafka topic "receiving-event-hub"
+    # Subscribe from MQTT topic "fridge1" and send to Kafka topic "receiving"
     - mqttToKafka:
-        name: "prosys-route1"
+        name: "route1"
         mqttTopic: azure-iot-operations/data/fridge1
-        kafkaTopic: receiving-prosys
+        kafkaTopic: receiving
         kafkaAcks: one
         qos: 1
         sharedSubscription:
           groupName: group1
           groupMinimumShareNumber: 3
-    # Pull from kafka topic "sending-event-hub" and publish to MQTT topic "thermostat-commands"
+    # Pull from kafka topic "sending" and publish to MQTT topic "fridge1-commands"
     - kafkaToMqtt:
-        name: "prosys-route2"
+        name: "route2"
         consumerGroupId: mqConnector
-        kafkaTopic: sending-prosys
+        kafkaTopic: sending
         mqttTopic: azure-iot-operations/data/fridge1-commands
         qos: 0
