@@ -1,25 +1,25 @@
 # Set the required environment variables
 
 # Resource group for resources
-RESOURCE_GROUP=IoTOperationsDemo
+RESOURCE_GROUP=AIO_Demo_Env
 
 # Bicep template files name
 TEMPLATE_FILE_NAME=EventHubRoleAssign.bicep
 
-# MQ Arc extension name
-MQ_EXTENSION_NAME=mq
+# AIO Arc extension name
+AIO_EXTENSION_NAME=azure-iot-operations-qvfev
 
 # Arc connected cluster name
-CLUSTER_NAME=IoTOperationsCluster
+CLUSTER_NAME=aiocluster
 
 # Event Hubs namespace name
-EVENTHUB_NAMESPACE=iotoperationseh
+EVENTHUB_NAMESPACE=jomaioeh
 
 
 az deployment group create \
       --name assign-RBAC-roles \
       --resource-group $RESOURCE_GROUP \
       --template-file $TEMPLATE_FILE_NAME \
-      --parameters mqExtensionName=$MQ_EXTENSION_NAME \
+      --parameters aioExtensionName=$AIO_EXTENSION_NAME \
       --parameters clusterName=$CLUSTER_NAME \
       --parameters eventHubNamespaceName=$EVENTHUB_NAMESPACE
