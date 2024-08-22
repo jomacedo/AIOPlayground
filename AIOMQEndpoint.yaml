@@ -1,0 +1,12 @@
+apiVersion: connectivity.iotoperations.azure.com/v1beta1
+kind: DataflowEndpoint
+metadata:
+  name: aiomq
+spec:
+  endpointType: mqtt
+  authentication:
+    method: serviceAccountToken
+    serviceAccountTokenSettings:
+      audience: aio-mqtt
+  mqttSettings:
+    {}

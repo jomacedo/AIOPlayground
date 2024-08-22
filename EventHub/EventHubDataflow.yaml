@@ -1,0 +1,20 @@
+apiVersion: connectivity.iotoperations.azure.com/v1beta1
+kind: Dataflow
+metadata:
+  name: eventhubdataflow
+spec:
+  profileRef: my-dataflow-profile
+  mode: enabled
+  operations:
+    - operationType: source
+      name: aiomq
+      sourceSettings:
+        endpointRef: mq
+        dataSources:
+          - azure-iot-operations/data/#
+        serializationFormat: Json
+    - operationType: destination
+      name: jomaioeh
+      destinationSettings:
+        endpointRef: eventhubendpoint
+        dataDestination: destinationtopic
