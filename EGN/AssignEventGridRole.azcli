@@ -1,0 +1,25 @@
+# Set the required environment variables
+
+# Resource group for resources
+RESOURCE_GROUP=AIO_Demo_Env
+
+# Bicep template files name
+TEMPLATE_FILE_NAME=EventGridRoleAssign.bicep
+
+# AIO Arc extension name
+AIO_EXTENSION_NAME=azure-iot-operations-qvfev
+
+# Arc connected cluster name
+CLUSTER_NAME=aiocluster
+
+# Event Grids namespace name
+EVENTGRID_NAMESPACE=jomaioeg
+
+
+az deployment group create \
+      --name assign-RBAC-roles \
+      --resource-group $RESOURCE_GROUP \
+      --template-file $TEMPLATE_FILE_NAME \
+      --parameters aioExtensionName=$AIO_EXTENSION_NAME \
+      --parameters clusterName=$CLUSTER_NAME \
+      --parameters eventGridNamespaceName=$EVENTGRID_NAMESPACE
