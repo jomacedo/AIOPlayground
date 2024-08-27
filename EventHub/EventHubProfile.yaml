@@ -1,0 +1,24 @@
+apiVersion: v1
+items:
+- apiVersion: connectivity.iotoperations.azure.com/v1beta1
+  kind: DataflowProfile
+  metadata:
+    name: eventhubprofile
+    namespace: azure-iot-operations
+    ownerReferences:
+    - apiVersion: iotoperations.azure.com/v1beta1
+      kind: Instance
+      name: aiocluster-ops-instance
+      uid: f96399e5-48f8-4577-8d06-7aff2f23352c
+  spec:
+    diagnostics:
+      logs:
+        level: info
+        openTelemetryExportConfig: null
+      metrics:
+        openTelemetryExportConfig: null
+        prometheusPort: 9600
+    instanceCount: 1
+kind: List
+metadata:
+  resourceVersion: ""
