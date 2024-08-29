@@ -9,7 +9,7 @@ spec:
     - operationType: source
       name: aiomq
       sourceSettings:
-        endpointRef: mq
+        endpointRef: aiomq
         dataSources:
           - azure-iot-operations/data/#
         serializationFormat: Json
