@@ -1,7 +1,7 @@
 apiVersion: connectivity.iotoperations.azure.com/v1beta1
 kind: Dataflow
 metadata:
-  name: eventhub
+  name: eventgrid
 spec:
   profileRef: profile
   mode: enabled
@@ -16,5 +16,5 @@ spec:
     - operationType: destination
       name: jomaioeh
       destinationSettings:
-        endpointRef: eventhub
+        endpointRef: eventgrid
         dataDestination: destinationtopic

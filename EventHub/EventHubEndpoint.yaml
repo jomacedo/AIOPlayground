@@ -1,7 +1,7 @@
 apiVersion: connectivity.iotoperations.azure.com/v1beta1
 kind: DataflowEndpoint
 metadata:
-  name: eventhubendpoint
+  name: eventhub
 spec:
   endpointType: kafka
   authentication:

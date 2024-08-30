@@ -3,7 +3,7 @@ items:
 - apiVersion: connectivity.iotoperations.azure.com/v1beta1
   kind: DataflowProfile
   metadata:
-    name: eventhubprofile
+    name: eventhub
     namespace: azure-iot-operations
     ownerReferences:
     - apiVersion: iotoperations.azure.com/v1beta1

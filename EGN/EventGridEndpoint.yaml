@@ -1,0 +1,14 @@
+apiVersion: connectivity.iotoperations.azure.com/v1beta1
+kind: DataflowEndpoint
+metadata:
+  name: eventgrid
+spec:
+  endpointType: mqtt
+  authentication:
+    method: systemAssignedManagedIdentity
+    systemAssignedManagedIdentitySettings:
+      audience: "https://eventgrid.azure.net"
+  mqttSettings:
+    host: jomaioeg.northeurope-1.ts.eventgrid.azure.net:8883
+    tls:
+      mode: Enabled
