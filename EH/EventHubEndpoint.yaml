@@ -4,7 +4,7 @@ metadata:
   name: eventhub
   namespace: azure-iot-operations
 spec:
-  endpointType: kafka
+  endpointType: kafkaSettings
   authentication:
     method: systemAssignedManagedIdentity
     systemAssignedManagedIdentitySettings: 
@@ -13,4 +13,4 @@ spec:
     host: jomaioeh.servicebus.windows.net:9093
     tls:
       mode: Enabled
-    consumerGroupId: mqConnector
+    # consumerGroupId: mqConnector

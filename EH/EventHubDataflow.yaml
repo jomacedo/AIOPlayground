@@ -5,7 +5,6 @@ metadata:
   namespace: azure-iot-operations
 spec:
   profileRef: profile
-  mode: enabled
   operations:
     - operationType: source
       name: mq
@@ -13,7 +12,6 @@ spec:
         endpointRef: mq
         dataSources:
           - azure-iot-operations/data/#
-        serializationFormat: Json
     - operationType: destination
       name: jomaioeh
       destinationSettings:
