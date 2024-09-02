@@ -10,4 +10,5 @@ spec:
     serviceAccountTokenSettings:
       audience: aio-mq
   mqttSettings:
+    {}
  
