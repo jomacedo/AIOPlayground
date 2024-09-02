@@ -4,7 +4,7 @@ metadata:
   name: mq
   namespace: azure-iot-operations
 spec:
-  endpointType: mqttSettings
+  endpointType: mqtt
   authentication:
     method: serviceAccountToken
     serviceAccountTokenSettings:

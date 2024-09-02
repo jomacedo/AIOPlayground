@@ -7,13 +7,11 @@ spec:
   profileRef: profile
   operations:
     - operationType: source
-      name: mq
       sourceSettings:
         endpointRef: mq
         dataSources:
           - azure-iot-operations/data/#
     - operationType: destination
-      name: jomaioeh
       destinationSettings:
         endpointRef: eventhub
         dataDestination: destinationtopic

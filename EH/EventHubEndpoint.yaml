@@ -4,7 +4,7 @@ metadata:
   name: eventhub
   namespace: azure-iot-operations
 spec:
-  endpointType: kafkaSettings
+  endpointType: kafka
   authentication:
     method: systemAssignedManagedIdentity
     systemAssignedManagedIdentitySettings: 
