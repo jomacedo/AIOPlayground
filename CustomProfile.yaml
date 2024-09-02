@@ -6,7 +6,7 @@ spec:
   instanceCount: 1
   diagnostics:
     logFormat: text
-    logLevel: info
+    logLevel: debug
     metrics:
       mode: enabled
       cacheTimeoutSeconds: 600
