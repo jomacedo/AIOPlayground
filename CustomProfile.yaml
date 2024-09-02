@@ -1,24 +1,24 @@
-apiVersion: v1
-items:
-- apiVersion: connectivity.iotoperations.azure.com/v1beta1
-  kind: DataflowProfile
-  metadata:
-    name: custom
-    namespace: azure-iot-operations
-    ownerReferences:
-    - apiVersion: iotoperations.azure.com/v1beta1
-      kind: Instance
-      name: aiocluster-ops-instance
-      uid: f96399e5-48f8-4577-8d06-7aff2f23352c
-  spec:
-    diagnostics:
-      logs:
-        level: debug
-        openTelemetryExportConfig: null
-      metrics:
-        openTelemetryExportConfig: null
-        prometheusPort: 9600
-    instanceCount: 1
-kind: List
+apiVersion: connectivity.iotoperations.azure.com/v1beta1
+kind: DataflowProfile
 metadata:
-  resourceVersion: ""
+  name: my-dataflow-profile
+spec:
+  instanceCount: 1
+  diagnostics:
+    logFormat: text
+    logLevel: info
+    metrics:
+      mode: enabled
+      cacheTimeoutSeconds: 600
+      exportIntervalSeconds: 10
+      prometheusPort: 9600
+      updateIntervalSeconds: 30
+    traces:
+      mode: enabled
+      cacheSizeMegabytes: 16
+      exportIntervalSeconds: 10
+      openTelemetryCollectorAddress: null
+      selfTracing:
+        mode: enabled
+        frequencySeconds: 30
+      spanChannelCapacity: 100
