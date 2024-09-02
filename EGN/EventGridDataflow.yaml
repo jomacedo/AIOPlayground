@@ -4,7 +4,7 @@ metadata:
   name: eventgrid
   namespace: azure-iot-operations
 spec:
-  profileRef: custom
+  profileRef: profile
   mode: enabled
   operations:
     - operationType: source
