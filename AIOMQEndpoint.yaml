@@ -2,6 +2,7 @@ apiVersion: connectivity.iotoperations.azure.com/v1beta1
 kind: DataflowEndpoint
 metadata:
   name: mq
+  namespace: azure-iot-operations
 spec:
   endpointType: mqtt
   authentication:
