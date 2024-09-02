@@ -1,7 +1,7 @@
 apiVersion: connectivity.iotoperations.azure.com/v1beta1
 kind: DataflowProfile
 metadata:
-  name: example-dataflow
+  name: custom
   namespace: azure-iot-operations
 spec:
   instanceCount: 1
