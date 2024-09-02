@@ -3,7 +3,7 @@ kind: Dataflow
 metadata:
   name: eventhub
 spec:
-  profileRef: profile
+  profileRef: custom
   mode: enabled
   operations:
     - operationType: source

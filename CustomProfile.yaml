@@ -3,7 +3,7 @@ items:
 - apiVersion: connectivity.iotoperations.azure.com/v1beta1
   kind: DataflowProfile
   metadata:
-    name: eventhub
+    name: custom
     namespace: azure-iot-operations
     ownerReferences:
     - apiVersion: iotoperations.azure.com/v1beta1
@@ -13,7 +13,7 @@ items:
   spec:
     diagnostics:
       logs:
-        level: info
+        level: debug
         openTelemetryExportConfig: null
       metrics:
         openTelemetryExportConfig: null
