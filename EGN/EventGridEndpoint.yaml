@@ -4,7 +4,7 @@ metadata:
   name: eventgrid
   namespace: azure-iot-operations
 spec:
-  endpointType: mqtt
+  endpointType: mqttSettings
   authentication:
     method: systemAssignedManagedIdentity
     systemAssignedManagedIdentitySettings:
