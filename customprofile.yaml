@@ -1,27 +1,25 @@
 apiVersion: connectivity.iotoperations.azure.com/v1beta1
 kind: DataflowProfile
 metadata:
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"connectivity.iotoperations.azure.com/v1beta1","kind":"DataflowProfile","metadata":{"annotations":{},"name":"custom","namespace":"azure-iot-operations"},"spec":{"diagnostics":{"logs":{"level":"debug"}},"instanceCount":1}}
-    management.azure.com/correlationId: a75f3ec0-4524-4304-883a-e3198d8a8785
-    management.azure.com/customLocation: /subscriptions/02bb9650-201b-4c77-8976-8b45b4ba2aa7/resourceGroups/aio_demo_env/providers/microsoft.extendedlocation/customlocations/aiocluster-z4iki-ops-init-cl
-    management.azure.com/errorMessage: '{"code":"NoRegisteredProviderFound","message":"No
-      registered resource provider found for location ''northeurope'' and API version
-      ''2021-10-01-privatepreview'' for type ''instances/dataflowProfiles''. The supported
-      api-versions are ''2024-07-01-preview, 2024-08-15-preview''. The supported locations
-      are ''eastus2, eastus, westus2, westus, westus3, westeurope, northeurope''."}'
-  creationTimestamp: "2024-09-02T07:35:39Z"
-  generation: 2
   name: custom
   namespace: azure-iot-operations
-  resourceVersion: "3260714"
-  uid: 9529d10f-f5a7-4453-bd52-6f0f044a03a6
 spec:
-  diagnostics:
-    logs:
-      level: debug
-    metrics:
-      openTelemetryExportConfig: null
-      prometheusPort: 9600
   instanceCount: 1
+  diagnostics:
+    logFormat: text
+    logLevel: debug
+    metrics:
+      mode: enabled
+      cacheTimeoutSeconds: 600
+      exportIntervalSeconds: 10
+      prometheusPort: 9600
+      updateIntervalSeconds: 30
+    traces:
+      mode: enabled
+      cacheSizeMegabytes: 16
+      exportIntervalSeconds: 10
+      openTelemetryCollectorAddress: null
+      selfTracing:
+        mode: enabled
+        frequencySeconds: 30
+      spanChannelCapacity: 100
