@@ -6,7 +6,7 @@ metadata:
 spec:
   endpointType: mqtt
   authentication:
-    method: systemAssignedManagedIdentity
+    method: SystemAssignedManagedIdentity
     systemAssignedManagedIdentitySettings:
       audience: https://eventgrid.azure.net
   mqttSettings:
