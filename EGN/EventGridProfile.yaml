@@ -1,10 +1,10 @@
 apiVersion: connectivity.iotoperations.azure.com/v1beta1
 kind: DataflowProfile
 metadata:
-  name: custom
+  name: eventgrid
   namespace: azure-iot-operations
 spec:
   instanceCount: 1
   diagnostics:
     logs:
-      level: "debug"
+      level: "Debug"

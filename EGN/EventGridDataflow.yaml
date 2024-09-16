@@ -4,18 +4,15 @@ metadata:
   name: eventgrid
   namespace: azure-iot-operations
 spec:
-  profileRef: profile
+  profileRef: eventgrid
   mode: enabled
   operations:
     - operationType: source
-      name: mq
       sourceSettings:
         endpointRef: mq
         dataSources:
           - azure-iot-operations/data/#
-        serializationFormat: Json
     - operationType: destination
-      name: jomaioeh
       destinationSettings:
         endpointRef: eventgrid
         dataDestination: destinationtopic
