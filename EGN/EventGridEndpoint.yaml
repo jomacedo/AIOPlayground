@@ -8,7 +8,7 @@ spec:
   authentication:
     method: systemAssignedManagedIdentity
     systemAssignedManagedIdentitySettings:
-      audience: jomaioeg.northeurope-1.ts.eventgrid.azure.net
+      audience: https://eventgrid.azure.net
   mqttSettings:
     host: jomaioeg.northeurope-1.ts.eventgrid.azure.net:8883
     tls:
