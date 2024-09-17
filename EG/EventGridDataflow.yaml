@@ -15,4 +15,4 @@ spec:
     - operationType: destination
       destinationSettings:
         endpointRef: eventgrid
-        dataDestination: destinationtopic
+        dataDestination: telemetry/fridges
