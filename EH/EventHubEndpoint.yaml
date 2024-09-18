@@ -6,11 +6,10 @@ metadata:
 spec:
   endpointType: kafka
   authentication:
-    method: systemAssignedManagedIdentity
+    method: SystemAssignedManagedIdentity
     systemAssignedManagedIdentitySettings: 
       audience: https://jomaioeh.servicebus.windows.net
   kafkaSettings:
     host: jomaioeh.servicebus.windows.net:9093
     tls:
       mode: Enabled
-    # consumerGroupId: mqConnector
