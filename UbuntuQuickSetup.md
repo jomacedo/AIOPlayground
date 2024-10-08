@@ -138,3 +138,29 @@ Use the [az connectedk8 connect](https://learn.microsoft.com/en-us/cli/azure/con
 ```bash {"id":"01J9P35Z635FFWQD8P07N5BARE"}
 az connectedk8s connect -n $CLUSTER_NAME -l $LOCATION -g $RESOURCE_GROUP --subscription $SUBSCRIPTION_ID
 ```
+
+* Run the following commands to facilitate kubectl commands.
+
+```bash {"id":"01J9PF3XC9GYQH3R3GYQJ30158"}
+if ! grep -q "# Kubernetes config" ~/.bashrc; then
+        cat <<EOF >>~/.bashrc
+
+# Kubernetes config
+if command -v kubectl &> /dev/null; then
+    alias k=$(command -v kubectl)
+    source <(kubectl completion bash)
+    source <(kubectl completion bash | sed s/kubectl/k/g)
+
+    alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
+    #export KUBE_EDITOR='code --wait'
+    export KUBE_EDITOR='nano'
+fi
+EOF
+fi
+```
+
+* Install K9s for a better Kubernetes management experience.
+
+```bash {"id":"01J9PFDQX0AP229B4Q68ZAW13K"}
+sudo snap install k9s
+```
