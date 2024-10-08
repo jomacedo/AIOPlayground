@@ -1,4 +1,4 @@
-# Azure IoT Operations on Ubuntu (20/22/24.04) - Quick Start
+# Azure IoT Operations on Ubuntu (20/22/24.04) - Quick Start - Test Settings
 
 * Install Azure CLI in your Machine
 
@@ -162,5 +162,9 @@ fi
 * Install K9s for a better Kubernetes management experience.
 
 ```bash {"id":"01J9PFDQX0AP229B4Q68ZAW13K"}
-sudo snap install k9s
+if ! command -v k9s &>/dev/null; then
+    sudo snap install k9s
+    #bug in installer
+    sudo ln -s /snap/k9s/current/bin/k9s /usr/bin
+fi
 ```
