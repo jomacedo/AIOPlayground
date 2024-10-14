@@ -1,5 +1,7 @@
 # Azure IoT Operations on Ubuntu (20/22/24.04) - Quick Start - Test Settings
 
+## Host Machine (Ubuntu or WSL)
+
 * Install Azure CLI in your Machine
 
 ```bash {"id":"01J9P2GSRJCXT6MXXXQWGVCHC7"}
@@ -27,9 +29,6 @@ export RESOURCE_GROUP=<NEW_RESOURCE_GROUP_NAME>
 
 # Name of the VM to create in your resource group
 export VM_NAME=<NEW_VM_NAME>
-
-# Name of the Arc-enabled cluster to create in your resource group
-export CLUSTER_NAME=<NEW_CLUSTER_NAME> # lower case
 ```
 
 * Set the Azure subscription context for all commands:
@@ -59,6 +58,8 @@ az vm create -g $RESOURCE_GROUP -n $VM_NAME --image Ubuntu2204 --admin-username 
 ```bash {"id":"01J9P2HAKKQQTJBJXHZG2C630T"}
 ssh azureuser@<VM_IP_ADDRESS>
 ```
+
+## Remote Machine (AIO Host)
 
 * Run the following commands to ensure the system is up to date.
 
@@ -110,21 +111,30 @@ az login
 * Set environment variables for the rest of the setup. Use the same values as in the Host machine setup.
 
 ```bash {"id":"01J9P2GSRJCXT6MXXXR1KRG7SW"}
-# Id of the subscription where your resource group and Arc-enabled cluster will be created
+# Id of the subscription where your resource group and Arc-enabled cluster will be created.
 export SUBSCRIPTION_ID=<SUBSCRIPTION_ID>
 
-# Azure region where the created resource group will be located
-# Currently supported regions: "eastus", "eastus2", "westus", "westus2", "westus3", "westeurope", or "northeurope"
+# Azure region where the created resource group will be located.
+# Currently supported regions: "eastus", "eastus2", "westus", "westus2", "westus3", "westeurope", or "northeurope".
 export LOCATION="northeurope"
 
-# Name of the resource group created to host the VM. It will also hold the Arc-enabled cluster and Azure IoT Operations resources
+# Name of the resource group created to host the VM. It will also hold the Arc-enabled cluster and Azure IoT Operations resources.
 export RESOURCE_GROUP=<NEW_RESOURCE_GROUP_NAME>
 
-# Name of the VM to create in your resource group
+# Name of the VM to create in your resource group.
 export VM_NAME=<NEW_VM_NAME>
 
-# Name of the Arc-enabled cluster to create in your resource group
-export CLUSTER_NAME=<NEW_CLUSTER_NAME> # lower case
+# Name of the Arc-enabled cluster (lower case) to create in your resource group.
+export CLUSTER_NAME=<NEW_CLUSTER_NAME>
+
+# Name of the Storage account to store schema registries.
+export STORAGE_ACCOUNT_NAME=<STORAGE_ACCOUNT_NAME>
+
+# A name for your schema registry.
+export SCHEMA_REGISTRY=<SCHEMA_REGISTRY_NAME>
+
+# A name for your schema registry namespace. The namespace uniquely identifies a schema registry within a tenant.
+export SCHEMA_REGISTRY_NAMESPACE=<SCHEMA_REGISTRY_NAMESPACE>
 ```
 
 * Set the Azure subscription context for all commands:
@@ -167,4 +177,22 @@ if ! command -v k9s &>/dev/null; then
     #bug in installer
     sudo ln -s /snap/k9s/current/bin/k9s /usr/bin
 fi
+```
+
+* Create a storage account with hierarchical namespace enabled.
+
+```bash {"id":"01JA51QW3XX4GP71KM4HN4MSBH"}
+az storage account create --name $STORAGE_ACCOUNT_NAME --location $LOCATION --resource-group $RESOURCE_GROUP --enable-hierarchical-namespace
+```
+
+* Create a schema registry that connects to your storage account. This command also creates a blob container called schemas in the storage account if one doesn't exist already.
+
+```bash {"id":"01JA51XFSM6TB5YTYAG5YWVV61"}
+az iot ops schema registry create --name $SCHEMA_REGISTRY --resource-group $RESOURCE_GROUP --registry-namespace $SCHEMA_REGISTRY_NAMESPACE --sa-resource-id $(az storage account show --name $STORAGE_ACCOUNT_NAME -o tsv --query id)
+```
+
+* Initialize your cluster for Azure IoT Operations.
+
+```bash {"id":"01JA51HQ1R8JPM17Y7025M91GD"}
+az iot ops init --cluster $CLUSTER_NAME --resource-group $RESOURCE_GROUP --sr-resource-id $(az iot ops schema registry show --name $SCHEMA_REGISTRY --resource-group $RESOURCE_GROUP -o tsv --query id)
 ```
