@@ -53,13 +53,13 @@ az provider register -n "Microsoft.IoTOperations"
 az vm create -g $RESOURCE_GROUP -n $VM_NAME --image Ubuntu2204 --admin-username "azureuser" --generate-ssh-keys --size Standard_D4s_v3 --location $LOCATION --ssh-key-name $VM_NAME 
 ```
 
+## Remote Machine (AIO Host)
+
 * Connect to the machine via SSH/Bastion (if Bastion, use Bastion Developer)
 
 ```bash {"id":"01J9P2HAKKQQTJBJXHZG2C630T"}
 ssh azureuser@<VM_IP_ADDRESS>
 ```
-
-## Remote Machine (AIO Host)
 
 * Run the following commands to ensure the system is up to date.
 
@@ -195,4 +195,10 @@ az iot ops schema registry create --name $SCHEMA_REGISTRY --resource-group $RESO
 
 ```bash {"id":"01JA51HQ1R8JPM17Y7025M91GD"}
 az iot ops init --cluster $CLUSTER_NAME --resource-group $RESOURCE_GROUP --sr-resource-id $(az iot ops schema registry show --name $SCHEMA_REGISTRY --resource-group $RESOURCE_GROUP -o tsv --query id)
+```
+
+* Deploy Azure IoT Operations. This command takes several minutes to complete.
+
+```bash {"id":"01JA52Z59G5Y1JBQP8D7Y9BG7E"}
+az iot ops create --cluster $CLUSTER_NAME --resource-group $RESOURCE_GROUP --name ${CLUSTER_NAME}-instance
 ```
