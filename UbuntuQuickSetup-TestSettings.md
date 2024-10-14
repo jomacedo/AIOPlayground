@@ -37,16 +37,6 @@ export VM_NAME=<NEW_VM_NAME>
 az account set -s $SUBSCRIPTION_ID
 ```
 
-* Register the required resource providers in your subscription:
-
-```bash {"id":"01J9P2GSRJCXT6MXXXR6BEKQP4"}
-az provider register -n "Microsoft.ExtendedLocation"
-az provider register -n "Microsoft.Kubernetes"
-az provider register -n "Microsoft.KubernetesConfiguration"
-az provider register -n "Microsoft.DeviceRegistry"
-az provider register -n "Microsoft.IoTOperations"
-```
-
 * Deploy an Ubuntu 24.04/22.04/20.04 VM on a Resource Group (recommended SKU Standard_D4s class)
 
 ```bash {"id":"01J9P2GSRJCXT6MXXXR9V8GY67"}
@@ -141,6 +131,16 @@ export SCHEMA_REGISTRY_NAMESPACE=<SCHEMA_REGISTRY_NAMESPACE>
 
 ```bash {"id":"01J9P2GSRJCXT6MXXXR49NGRH1"}
 az account set -s $SUBSCRIPTION_ID
+```
+
+* Register the required resource providers in your subscription:
+
+```bash {"id":"01J9P2GSRJCXT6MXXXR6BEKQP4"}
+az provider register -n "Microsoft.ExtendedLocation"
+az provider register -n "Microsoft.Kubernetes"
+az provider register -n "Microsoft.KubernetesConfiguration"
+az provider register -n "Microsoft.DeviceRegistry"
+az provider register -n "Microsoft.IoTOperations"
 ```
 
 Use the [az connectedk8 connect](https://learn.microsoft.com/en-us/cli/azure/connectedk8s#az-connectedk8s-connect) command to Arc-enable your Kubernetes cluster and manage it in the resource group you created in the previous step:
