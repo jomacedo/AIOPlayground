@@ -1,8 +1,8 @@
 # Azure IoT Operations on Ubuntu (20/22/24.04) - Quick Start - Test Settings
 
-## Host Machine (Ubuntu or WSL)
+## Deploy VM from host machine (Ubuntu or WSL)
 
-* Install Azure CLI in your Machine
+* Install Azure CLI on the Machine
 
 ```bash {"id":"01J9P2GSRJCXT6MXXXQWGVCHC7"}
 sudo curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -14,7 +14,7 @@ sudo curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az login
 ```
 
-* Set environment variables for the rest of the setup. Replace values in <> with valid values or names of your choice. CLUSTER_NAME needs to be lower case. A new cluster and resource group are created in your Azure subscription based on the names you provide:
+* Set environment variables. Replace values in <> with valid values or names of your choice.
 
 ```bash {"id":"01J9P2GSRJCXT6MXXXR1KRG7SW"}
 # Id of the subscription where your resource group and Arc-enabled cluster will be created
@@ -22,7 +22,7 @@ export SUBSCRIPTION_ID=<SUBSCRIPTION_ID>
 
 # Azure region where the created resource group will be located
 # Currently supported regions: "eastus", "eastus2", "westus", "westus2", "westus3", "westeurope", or "northeurope"
-export LOCATION="northeurope"
+export LOCATION=<LOCATION>
 
 # Name of the resource group created to host the VM. It will also hold the Arc-enabled cluster and Azure IoT Operations resources
 export RESOURCE_GROUP=<NEW_RESOURCE_GROUP_NAME>
